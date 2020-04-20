@@ -51,9 +51,13 @@ class InteractiveRecord
     row = DB[:conn].execute(sql,name)
   end
 
-  def self.find_by
-
+  def self.find_by(hash)
+    sql = <<-SQL
+      SELECT * FROM #{self.table_name}
+      WHERE #{attr_key} = "#{attr_value}"
+      LIMIT 1
+    SQL
+    row = DB[:conn].execute(sql)
   end
-
 
 end
