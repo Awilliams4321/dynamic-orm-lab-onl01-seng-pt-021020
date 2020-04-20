@@ -51,7 +51,7 @@ class InteractiveRecord
     row = DB[:conn].execute(sql,name)
   end
 
-  def self.find_by(hash)
+  def self.find_by(attr)
     sql = <<-SQL
       SELECT * FROM #{self.table_name}
       WHERE #{attr_key} = "#{attr_value}"
